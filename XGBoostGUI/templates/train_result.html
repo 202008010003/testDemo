@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模型训练结果</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        .content-container {
+            width: 50%; /* 设置宽度为页面的 80% */
+            max-width: 1200px; /* 最大宽度 */
+            margin: 0 auto; /* 居中显示 */
+            padding: 0px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .header {
+            background-color: #166A1F; /* 绿色主题色 */
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0; /* 取消所有的 padding，去除四周的间隙 */
+            width: 100%; /* 确保宽度为 100%，填充父容器 */
+            font-size: 22px;
+            font-weight: bold;
+            height: 80px; /* 保持原本的高度 */
+        }
+
+        .header img {
+            width: 250px; /* 设置 logo 图片大小 */
+            height: auto;
+            margin-left: 20px; /* logo 图片和文字之间的间距 */
+            margin-right: 20px; /* logo 图片和文字之间的间距 */
+        }
+
+        h3 {
+            color: #166A1F;
+        }
+
+        .metrics-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .metrics {
+            width: 48%; /* 每个性能指标区域占 48% 宽度 */
+            font-size: 16px;
+        }
+
+        .metrics p {
+            margin: 5px 0;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 60%;
+            padding: 12px;
+            background-color: #166A1F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+            display: block;        /* 设置按钮为块级元素 */
+            margin-left: auto;     /* 左右自动边距 */
+            margin-right: auto;    /* 左右自动边距 */
+        }
+
+
+        button:hover {
+            background-color: #135c18;
+        }
+
+    </style>
+
+
+
+</head>
+<body>
+
+<div class="header">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+    <span >模型训练结果</span>
+</div>
+<div class="content-container">
+
+
+
+    <div class="metrics-container">
+        <div class="metrics">
+            <h3>瞬时应变 模型训练性能指标</h3>
+            <p>MSE: {{ mse_y1_train }}</p>
+            <p>RMSE: {{ rmse_y1_train }}</p>
+            <p>MAE: {{ mae_y1_train }}</p>
+            <p>MAPE: {{ mape_y1_train }}%</p>
+            <p>R^2: {{ r2_y1_train }}</p>
+        </div>
+        <div class="metrics">
+            <h3>瞬时应变 模型测试集性能指标</h3>
+            <p>MSE: {{ mse_y1_test }}</p>
+            <p>RMSE: {{ rmse_y1_test }}</p>
+            <p>MAE: {{ mae_y1_test }}</p>
+            <p>MAPE: {{ mape_y1_test }}%</p>
+            <p>R^2: {{ r2_y1_test }}</p>
+        </div>
+    </div>
+
+
+    <div class="metrics-container">
+        <div class="metrics">
+            <h3>45min应变 模型训练性能指标</h3>
+            <p>MSE: {{ mse_y2_train }}</p>
+            <p>RMSE: {{ rmse_y2_train }}</p>
+            <p>MAE: {{ mae_y2_train }}</p>
+            <p>MAPE: {{ mape_y2_train }}%</p>
+            <p>R^2: {{ r2_y2_train }}</p>
+        </div>
+        <div class="metrics">
+            <h3>45min应变 模型测试集性能指标</h3>
+            <p>MSE: {{ mse_y2_test }}</p>
+            <p>RMSE: {{ rmse_y2_test }}</p>
+            <p>MAE: {{ mae_y2_test }}</p>
+            <p>MAPE: {{ mape_y2_test }}%</p>
+            <p>R^2: {{ r2_y2_test }}</p>
+        </div>
+    </div>
+
+    <div class="image-container">
+        <h3>模型测试拟合图</h3>
+        <img src="{{ url_for('uploaded_file', filename='model_fit.png') }}" alt="Model Training Plot">
+    </div>
+
+    <a href="/predict_page">
+        <button>实时预测</button>
+    </a>
+</div>
+</body>
+</html>

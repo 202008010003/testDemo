@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模型训练</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+    }
+
+    .header {
+      background-color: #166A1F; /* 使用你指定的绿色主题色 */
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      font-size: 22px;
+      font-weight: bold;
+      height: 50px; /* 控制表头高度 */
+    }
+
+    .header img {
+      width: 250px; /* 设置 logo 图片大小 */
+      height: auto;
+      margin-right: 20px; /* logo 图片和文字之间的间距 */
+    }
+
+    .content-container {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+
+    label {
+      font-size: 16px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #166A1F;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #135c18;
+    }
+
+    .success-message {
+      display: none;
+      color: #4CAF50;
+      text-align: center;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <img src="/static/logo.png" alt="Logo">
+  模型训练
+</div>
+
+<div class="content-container">
+  <form action="/train_model" method="POST" enctype="multipart/form-data">
+    <label for="file">上传数据集（CSV 或 Excel 文件）:</label>
+    <input type="file" id="file" name="file" required>
+
+    <button type="submit">训练模型</button>
+  </form>
+
+  <div class="success-message" id="success-message">
+    训练成功！模型已保存。
+  </div>
+</div>
+
+<script>
+  // 显示训练成功的消息
+  if (window.location.href.indexOf("success") > -1) {
+    document.getElementById('success-message').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

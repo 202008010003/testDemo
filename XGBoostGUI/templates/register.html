@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+        }
+
+        .header {
+            background-color: #166A1F; /* 使用你指定的绿色主题色 */
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            font-size: 22px;
+            font-weight: bold;
+            height: 50px; /* 控制表头高度 */
+        }
+
+        .header img {
+            width: 250px; /* 设置 logo 图片大小 */
+            height: auto;
+            margin-right: 20px; /* logo 图片和文字之间的间距 */
+        }
+
+        .content-container {
+            width: 100%;
+            max-width: 480px; /* 设置页面最大宽度 */
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 30px; /* 使内容不被表头压缩 */
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #166A1F; /* 使用绿色主题色 */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #135c18; /* 悬停时颜色变深 */
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="/static/logo.png" alt="Logo">
+   <span calss="header-title">用户注册</span>
+</div>
+
+<div class="content-container">
+    <form action="/register" method="POST">
+        <label for="username">用户名:</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">注册</button>
+    </form>
+</div>
+
+</body>
+</html>
